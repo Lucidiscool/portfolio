@@ -1,0 +1,8 @@
+{
+  "name": "davfxstudio-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "David's editorial creative portfolio. Dependency-free and ready for GitHub Pages.",
+  "scripts": { "start": "node tools/serve.mjs", "check": "node tools/check.mjs" },
+  "engines": { "node": ">=20" }
+}
