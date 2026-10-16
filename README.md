@@ -1,49 +1,42 @@
 # DavFXStudio
 
-David’s independent creative portfolio, built with HTML, CSS, JavaScript, and original SVG artwork. An editorial, monochrome direction inspired by the restrained typography and image-led presentation of [Derrick Joseph’s portfolio](https://www.derrickjoseph.media/), with an original layout, branding, copy, and artwork.
+A complete, buildless creative portfolio for David. HTML, CSS, JavaScript, local SVG artwork and one locally stored stock photograph. No npm installation, paid service, analytics, cookies, or backend required.
 
-## Run locally
+## Edit the site
 
-Requires Node.js 20 or newer. No dependencies or build step.
+- **Projects:** edit `js/content.js`. Each object in `projects` controls its title, category, image, alt text, short summary, expanded description and credits. Move an object to reorder, remove it to delete, or duplicate it with a unique `id` to add a project. Categories and the navigation count update automatically.
+- **Images:** upload your own files to `assets/`, then change the project's `image` path. Use relative paths such as `assets/my-project.webp` (no leading slash). Use descriptive alt text. WebP or JPEG around 1400px wide is a good starting point. The grid crops images; the detail preview shows the full image.
+- **Real work:** all launch projects are clearly labeled placeholders. Once you replace one with David's real work, set `placeholder: false`, update its copy and credit, and optionally add `url: 'https://...'`. Remove or rewrite the preview notice in `index.html` when appropriate. No sample is a claim of completed work.
+- **Contact:** replace `email` in `js/content.js`, then set `emailIsPlaceholder: false`. `hello@example.com` is a reserved example address, not a working contact. The site uses a mailto link; there is no contact form or email service.
+- **Social links:** add objects to `socials`, e.g. `{ label: 'Instagram', url: 'https://www.instagram.com/YOUR_HANDLE/' }`, replacing the URL with David's actual profile. No social handles have been invented. The coming-soon text disappears when valid links exist.
+- **Hero / about:** edit `index.html`. Replace `assets/featured.svg` or change the hero image's `src` and `alt`.
+- **Appearance:** `css/style.css` contains colors, typography, layout and responsive breakpoints. It uses system sans-serif fonts, so no font service is required.
+- **Year:** the footer updates automatically.
 
-```sh
-npm start
-```
+## Preview
 
-Open `http://127.0.0.1:4173/portfolio/`. The `/portfolio/` prefix mirrors the GitHub Pages project URL. Run `npm run check` to verify the content, assets, JavaScript syntax, and internal links.
+Open `index.html` directly in a modern browser. For an HTTP preview, run `python -m http.server 8080` in this folder and visit `http://localhost:8080`. No build step is needed.
 
-## Update the portfolio
+## GitHub Pages deployment
 
-Edit `content.js`. Each project has a title, discipline, medium, image, alt text, description, and `placeholder` flag. Add objects to the `projects` array to add work. Counts update automatically. Keep categories consistent with the five filter labels in `index.html`.
+This project is intended for https://github.com/Lucidiscool/portfolio and https://lucidiscool.github.io/portfolio/.
 
-1. Put David’s project images in `assets/` with descriptive filenames.
-2. Replace each sample’s `image`, `alt`, `title`, `medium`, and `description`.
-3. Set `placeholder: false` for real projects. Remove stock-image `credit` when replacing that photo.
-4. The section title automatically changes from “Selected directions” to “Selected work” once real work is added. The sample notice disappears when all placeholders are replaced.
+1. Upload all files and the `assets`, `css`, and `js` folders to the repository root on `main`. Keep the empty `.nojekyll` file. `index.html` must be at the root, not inside another folder.
+2. Open the repository's **Settings → Pages**.
+3. Choose **Deploy from a branch**, branch **main**, folder **/(root)**, then Save.
+4. Wait for the **pages build and deployment** workflow to finish. GitHub displays the live address in Settings → Pages.
+5. Future commits to `main` deploy automatically. A hard refresh may be needed after publication.
 
-The public email is `dgarner.whs@gmail.com`, as supplied. Update `email` and `socials` in `content.js` to change contact details. Keep the fallback mail links in `index.html` in sync if changing the address. GitHub is the only social profile currently supplied and verified. Update the introductory and About copy directly in `index.html` and styles in `styles.css`.
+No custom domain is required. Relative asset paths support the `/portfolio/` subdirectory. See [GitHub's deployment instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 
-## Publishing later, if David chooses
+## Assets and reference
 
-**This change is delivered as a pull request only. It does not enable or deploy GitHub Pages.** There is no deployment workflow.
+The visual direction was informed by https://www.derrickjoseph.media/: restrained navigation, whitespace, large imagery, concise project categories, and a dark closing section. Its artwork, personal information, project claims, code and photography are not included.
 
-After reviewing and merging the pull request, David can enable Pages:
+`assets/featured.svg`, `graphic.svg`, `world.svg`, `website.svg`, `experiment.svg`, and `favicon.svg` were made for this website as original placeholder artwork. The environment illustration is not a Roblox screenshot; the website mockup is not a client project.
 
-1. Open this repository’s **Settings → Pages**.
-2. Under **Build and deployment**, select **Deploy from a branch**.
-3. Choose **main** and **/ (root)**, then **Save**.
-4. GitHub will report the deployment URL, expected to be `https://dav256.github.io/portfolio/`.
+`assets/architecture.jpg` is a temporary Unsplash stock image, downloaded from https://images.unsplash.com/photo-1486406146926-c627a92ad1ab under the [Unsplash License](https://unsplash.com/license). It is explicitly not David's photography. Replace it with his own work before treating the gallery as a completed portfolio.
 
-Relative paths support the `/portfolio/` base path, and `.nojekyll` keeps this a plain static site. Hosting does not require npm, a backend, API keys, or a paid service.
+## Accessibility and behavior
 
-## Design and content notes
-
-- Responsive layouts for desktop, tablet, and mobile; native anchor navigation; keyboard-operable project dialogs; visible focus states; category filters with live announcements; reduced-motion support.
-- All five project entries are clearly marked illustrative placeholders, not work or achievements attributed to David. No clients, awards, testimonials, or professional claims are fabricated.
-- The hero sculpture, typographic poster, world-building illustration, web concept, generative line study, and favicon are original editable SVGs created for this layout. The Roblox sample is a conceptual illustration, not a Roblox screenshot.
-- Photography placeholder: [Daniele Levis Pelusi on Unsplash](https://unsplash.com/photos/white-concrete-building-with-black-background-KyxFocaDb04), used under the [Unsplash License](https://unsplash.com/license). The grayscale image is stored locally; its source is credited in the project detail view.
-- Instrument Sans is self-hosted; its SIL Open Font License is included in `assets/FONT-LICENSE.txt`.
-- No tracking, cookies, remote runtime image requests, or external font requests.
-- This is a working static implementation for GitHub, not a Framer project. No Framer integration was available. The structure and design can be recreated in Framer if David later chooses that platform.
-
-`DESIGN.md` documents the reference analysis and original design direction.
+Semantic sections, one H1, skip link, descriptive image alternatives, keyboard-visible focus, native modal focus containment and Escape dismissal, responsive navigation, category filters with pressed states and live result counts, and reduced-motion support. Core page content and contact remain accessible without JavaScript; the editable portfolio gallery requires JavaScript.
